@@ -1,0 +1,98 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      uri: http://localhost:8888
+  config:
+    import: optional:configserver:http://localhost:8888/
+  main:
+    allow-bean-definition-overriding: true
+management:
+  security:
+    enabled: false
+#server:
+#  port: 8080
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#spring:
+#  main:
+#    web-application-type: reactive
+#  application:
+#    name: api-gateway
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#          lowerCaseServiceId: true
+#        corsConfigurations:
+#          '[/**]':
+#            allowedOrigins: '*'
+#            allowedMethods: '*'
+#            allowedHeaders: '*'
+#            exposedHeaders: '*'
+#      routes:
+#        - id: user-service
+#          uri: lb://USER-SERVICE
+#          predicates:
+#            - Path=/api/**
+#          filters:
+#            - RewritePath=/user-service(?<segment>/?.*), $\{segment}
+#            
+#            
+#        - id: authentication-service
+#          uri: lb://AUTHENTICATION-SERVICE
+#          predicates:
+#            - Path=/authenticate/**
+#          filters:
+#            - RewritePath=/authentication-service(?<segment>/?.*), $\{segment}
+#            
+#            
+#        - id: email-service
+#          uri: lb://EMAIL-SERVICE
+#          predicates:
+#            - Path=/email/**
+#          filters:
+#            - RewritePath=/email-service(?<segment>/?.*), $\{segment}
+#            
+#            
+#        - id: payment-service
+#          uri: lb://PAYMENT-SERVICE
+#          predicates:
+#            - Path=/payment/**
+#          filters:
+#            - RewritePath=/payment-service(?<segment>/?.*), $\{segment}
+#            
+#            
+#        - id: product-service
+#          uri: lb://PRODUCT-SERVICE
+#          predicates:
+#            - Path=/product/**
+#          filters:
+#           - RewritePath=/product-service(?<segment>/?.*), $\{segment}
+#           
+#
+#        - id: cart-service
+#          uri: lb://CART-SERVICE
+#          predicates:
+#            - Path=/cart/** 
+#          filters:
+#           - RewritePath=/cart-service(?<segment>/?.*), $\{segment}
+#
+#
+#
+##        - id: product-webapp
+##          uri: lb://product-webapp
+##          predicates:
+##            - Path=/**
+##          filters:
+##            - RewritePath=(?<segment>/?.*), $\{segment}
+##        - id: qna-service
+##          uri: http://localhost:9001
+##          predicates:
+##            - Path=/qna-service/**
+##          filters:
+##           - RewritePath=/qna-service(?<segment>/?.*), $\{segment}
